@@ -45,20 +45,21 @@ function getdetails (link) {
             let urls = await page.evaluate(() => {
                 let results = {}
                 if(document.querySelector('.rhpdm')){
-                    let text = document.querySelector('.rhpdm')?.innerText;
-                    let extra = document.querySelector('.-vDIg > span')?.innerText;
+                     text = document.querySelector('.rhpdm')?.innerText;
+                     extra = document.querySelector('.-vDIg > span')?.innerText;
                     if(extra){
                         const emailCheck = extra.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
-
-                        let email = emailCheck ? emailCheck : 'No email Found'
-
-                        results ={user:text, email:email}
+                         email = emailCheck ? emailCheck : 'No email Found'
+                         return {user:text, email:email}
                     }
+                    else return  {user:text, email:'No email Found'};
+
+                     
                      
                 }
                 
                
-                return results;
+                
             })
             browser.close();
             return resolve(urls);
