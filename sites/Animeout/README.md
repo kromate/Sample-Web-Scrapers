@@ -1,0 +1,1 @@
+### Similar to gogoanime, you can contribute and test the scraper and write the endpoint
